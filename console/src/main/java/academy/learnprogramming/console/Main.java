@@ -18,27 +18,6 @@ public class Main {
 
         //Create context (container)
         ConfigurableApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
-
-        //Get number generator bean from context(container)
-        NumberGenerator numberGenerator = context.getBean( NumberGenerator.class);
-
-        //call next() method
-        int number = numberGenerator.next();
-
-        log.info("number = {}", number);
-
-        //Get String generator bean from context(container)
-        MessageGenerator messageGenerator = context.getBean(MessageGenerator.class);
-
-        String string = messageGenerator.getMainMessage();
-        String string1 = messageGenerator.getResultMessage();
-
-        log.info("String = {}", string );
-        log.info("String = {}", string1);
-
-        //get game bean from context(container)
-        Game game = context.getBean(Game.class);
-
         // close context (container)
         context.close();
     }

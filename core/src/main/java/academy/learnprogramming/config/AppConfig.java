@@ -11,11 +11,6 @@ public class AppConfig {
     // == Bean Methods ==
 
     @Bean
-    public NumberGenerator numberGenerator() {
-        return new NumberGeneratorImpl();
-    }
-
-    @Bean
     public Game game () {
         return new GameImpl();
     }
