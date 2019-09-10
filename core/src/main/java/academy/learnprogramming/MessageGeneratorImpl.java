@@ -17,18 +17,17 @@ public class MessageGeneratorImpl implements MessageGenerator{
     // == Fields ==
     @Autowired
     private Game game;
-    private int guessCount = 10;
 
     // == Init ==
 
     @PostConstruct
     public void init(){
-        log.info("Game {}", game);
+        log.info("Game = {}", game);
     }
     // == Public Methods ==
     @Override
     public String getMainMessage() {
-        return "The Number is between: " + game.getSmallest() + "and " + game.getBiggest() + " Can you guess it?" ;
+        return "The Number is between: " + game.getSmallest() + " and " + game.getBiggest() + " Can you guess it?" ;
     }
 
     @Override
@@ -40,14 +39,14 @@ public class MessageGeneratorImpl implements MessageGenerator{
             return "You lost, the right number is" + game.getNumber();
         }else if (!game.isValidNumberRange()){
             return "Invalid Number Range";
-        }else if(game.getRemainingGuesses() == guessCount){
+        }else if(game.getRemainingGuesses() == game.getGuessCount()){
             return "What is your first Guess?";
         }
         else{
-            String direction = "Lower";
+            String direction = " Lower ";
             if (game.getGuess() < game.getNumber())
-                direction = "Higher";
-            return direction + "You have" + game.getRemainingGuesses() + "Guesses remaining";
+                direction = " Higher ";
+            return direction +  " You have " + game.getRemainingGuesses() + " Guesses remaining ";
 
         }
 
